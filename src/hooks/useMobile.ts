@@ -9,8 +9,8 @@ export const useMobile = () => {
     };
 
     handleResize();
-    document.addEventListener("resize", handleResize);
-    return () => document.removeEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return isMobile;

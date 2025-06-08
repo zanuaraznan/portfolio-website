@@ -128,7 +128,7 @@ const WavyParticles: React.FC<{
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [count, size, velocity]);
 
   return (
     <>
