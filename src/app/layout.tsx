@@ -24,7 +24,7 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={`${plusJakarta.className} antialiased bg-white text-zinc-800 dark:text-gray-100 dark:bg-zinc-900 text-sm md:text-base`}>
-          <WavyParticles count={15} size={120} velocity={2} />
+          <WavyParticles count={15} size={120} velocity={10} />
           <Navbar />
           <main className="container">{children}</main>
         </body>
