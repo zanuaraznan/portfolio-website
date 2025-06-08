@@ -10,7 +10,7 @@ const NavbarList = () => {
 
   useEffect(() => {
     setCurrentHash(window.location.hash || "#about");
-  }, []);
+  }, [setCurrentHash]);
 
   return (
     <div className="nav-list_container flex items-center relative z-1">
