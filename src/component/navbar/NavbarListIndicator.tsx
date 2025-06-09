@@ -1,4 +1,4 @@
-import { useNavbarContext } from "@/app/context/NavbarContext";
+import { useNavbarContext } from "@/context/NavbarContext";
 import { useEffect, useState } from "react";
 
 type TargetInfoType = {

@@ -1,4 +1,4 @@
-import { useBackgroundContext } from "@/app/context/BackgroundContext";
+import { useBackgroundContext } from "@/context/BackgroundContext";
 
 const BGSwitcher = () => {
   const { isBG, setIsBG } = useBackgroundContext();

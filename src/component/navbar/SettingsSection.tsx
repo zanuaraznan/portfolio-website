@@ -1,5 +1,5 @@
 "use client";
-import { ModalContainer, ModalContextProvider } from "@/app/context/ModalContext";
+import { ModalContainer, ModalContextProvider } from "@/context/ModalContext";
 import SettingsButton from "./SettingsButton";
 import { LuSettings } from "react-icons/lu";
 import SettingsClose from "./SettingsClose";

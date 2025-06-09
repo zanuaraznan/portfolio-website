@@ -1,4 +1,4 @@
-import { useModalContext } from "@/app/context/ModalContext";
+import { useModalContext } from "@/context/ModalContext";
 import { MdClose } from "react-icons/md";
 
 const SettingsClose = () => {

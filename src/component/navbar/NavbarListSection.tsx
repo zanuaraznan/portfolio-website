@@ -1,5 +1,5 @@
 "use client";
-import { NavbarContextProvider } from "@/app/context/NavbarContext";
+import { NavbarContextProvider } from "@/context/NavbarContext";
 import NavbarList from "./NavbarList";
 import NavbarListIndicator from "./NavbarListIndicator";
 

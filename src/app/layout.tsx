@@ -3,8 +3,8 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/navbar/Navbar";
 import WavyParticles from "@/component/background/WavyParticles";
-import { BackgroundContextProvider } from "./context/BackgroundContext";
-import { ThemeContextProvider } from "./context/ThemeContext";
+import { BackgroundContextProvider } from "../context/BackgroundContext";
+import { ThemeContextProvider } from "../context/ThemeContext";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],

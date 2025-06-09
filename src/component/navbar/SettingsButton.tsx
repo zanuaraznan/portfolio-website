@@ -1,6 +1,6 @@
 "use client";
 
-import { useModalContext } from "@/app/context/ModalContext";
+import { useModalContext } from "@/context/ModalContext";
 import { LuSettings } from "react-icons/lu";
 
 const SettingsButton = () => {
