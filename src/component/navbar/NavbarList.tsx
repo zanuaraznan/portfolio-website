@@ -1,7 +1,6 @@
-"use client";
 import { navList } from "@/data/data";
 import { useEffect, useRef } from "react";
-import { useHashUrlContext } from "./NavbarContext";
+import { useHashUrlContext } from "../../app/context/NavbarContext";
 import Link from "next/link";
 
 const NavbarList = () => {

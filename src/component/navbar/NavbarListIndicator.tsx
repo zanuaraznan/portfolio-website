@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useHashUrlContext } from "./NavbarContext";
+import { useHashUrlContext } from "../../app/context/NavbarContext";
 
 type TargetInfoType = {
   width: number;
@@ -23,7 +23,7 @@ const NavbarListIndicator = () => {
 
   return (
     <div
-      className="absolute top-1 bottom-1 rounded-full bg-white dark:bg-zinc-700 transition-all"
+      className="absolute top-1 bottom-1 rounded-full bg-white dark:bg-zinc-700 transition-all ease-in-out duration-500"
       style={{ width: targetInfo?.width, left: (targetInfo?.left ?? 0) + 4 }}></div>
   );
 };

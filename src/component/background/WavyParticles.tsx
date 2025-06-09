@@ -1,11 +1,12 @@
 "use client";
+import { useBackgroundContext } from "@/app/context/BackgroundContext";
 import { useThemeContext } from "@/app/context/themeContext";
 import { useMobile } from "@/hooks/useMobile";
 import React, { useRef, useEffect } from "react";
 
 class Particle {
-  radius: number; // radius dasar (random di constructor)
-  dynamicRadius: number; // radius yang dipakai untuk gambar (radius + offset dinamis)
+  radius: number;
+  dynamicRadius: number;
   x: number;
   y: number;
   vx: number;
@@ -14,7 +15,6 @@ class Particle {
   width: number;
   height: number;
 
-  // Untuk animasi radius dinamis:
   radiusPhase: number;
   radiusSpeed: number;
   radiusAmplitude: number;
@@ -23,19 +23,16 @@ class Particle {
     this.radius = Math.random() * 3 + size;
     this.dynamicRadius = this.radius;
 
-    this.radiusPhase = Math.random() * Math.PI * 2; // fase acak
-    this.radiusSpeed = 0.001 + Math.random() * 0.001; // kecepatan perubahan radius
-    this.radiusAmplitude = this.radius * 0.4; // seberapa besar radius berubah (40% dari radius dasar)
+    this.radiusPhase = Math.random() * Math.PI * 2;
+    this.radiusSpeed = 0.001 + Math.random() * 0.001;
+    this.radiusAmplitude = this.radius * 0.4;
 
     this.x = Math.random() * width;
     this.y = Math.random() * height;
     this.vx = (Math.random() - 0.5) * velocity;
     this.vy = (Math.random() - 0.5) * velocity;
 
-    this.color =
-      Math.random() < 0.4
-        ? "#ffffff" // 30% kemungkinan putih
-        : `hsl(${Math.random() * 360}, 70%, 70%)`;
+    this.color = Math.random() < 0.4 ? "#ffffff" : `hsl(${Math.random() * 360}, 70%, 70%)`;
 
     this.width = width;
     this.height = height;
@@ -45,7 +42,6 @@ class Particle {
     this.x += this.vx;
     this.y += this.vy;
 
-    // Pantulan di batas viewport, tetap pakai radius dasar untuk hitbox
     if (this.x + this.radius > this.width) {
       this.x = this.width - this.radius;
       this.vx *= -1;
@@ -63,10 +59,9 @@ class Particle {
       this.vy *= -1;
     }
 
-    // Update dynamicRadius secara sinusoidal
     this.radiusPhase += this.radiusSpeed;
     this.dynamicRadius = this.radius + Math.sin(this.radiusPhase) * this.radiusAmplitude;
-    if (this.dynamicRadius < 0.1) this.dynamicRadius = 0.1; // pastikan tidak negatif
+    if (this.dynamicRadius < 0.1) this.dynamicRadius = 0.1;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
@@ -86,6 +81,7 @@ const WavyParticles: React.FC<{
   const particlesRef = useRef<Particle[]>([]);
   const isMobile = useMobile();
   const { theme } = useThemeContext();
+  const { isBG } = useBackgroundContext();
   const isDark = theme === "dark";
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -149,8 +145,9 @@ const WavyParticles: React.FC<{
           zIndex: -2,
           width: "120%",
           height: "120%",
-          filter: isMobile ? "url(#turbulence)" : "blur(120px)",
-          opacity: isMobile ? 0.3 : isDark ? 0.2 : 0.5,
+          filter: "blur(120px)",
+          opacity: isDark ? 0.3 : 0.5,
+          display: isBG ? "block" : "none",
         }}
       />
     </>

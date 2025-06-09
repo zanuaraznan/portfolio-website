@@ -7,6 +7,10 @@
   padding-inline: 16px;
 }
 
+* {
+  @apply focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-slate-300;
+}
+
 button {
   @apply cursor-pointer;
 }
