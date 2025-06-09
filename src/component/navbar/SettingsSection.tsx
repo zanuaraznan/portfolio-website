@@ -6,7 +6,7 @@ import SettingsClose from "./SettingsClose";
 import { MdOutlineWbSunny } from "react-icons/md";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(SplitText);

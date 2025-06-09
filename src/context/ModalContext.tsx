@@ -47,6 +47,7 @@ const ModalContextProvider = ({ children }: { children: React.ReactNode }) => {
       close();
     }
   };
+
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("mousedown", handleOutside);
@@ -55,7 +56,7 @@ const ModalContextProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     return () => document.removeEventListener("mousedown", handleOutside);
-  }, [isOpen]);
+  }, [isOpen, handleOutside]);
 
   return (
     <ModalContext.Provider value={{ isOpen, setIsOpen, isAnimating, setIsAnimating, open, close, modalRef }}>

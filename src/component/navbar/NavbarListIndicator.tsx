@@ -11,7 +11,6 @@ const NavbarListIndicator = () => {
   const { activeNavIdx, isStretching } = useNavbarContext();
 
   useEffect(() => {
-    console.log(isStretching.rtl);
     const navContainer = document.querySelector(".nav-list_container") as Element;
     const navActive = navContainer?.querySelector(".active") as Element;
 
@@ -19,7 +18,7 @@ const NavbarListIndicator = () => {
       width: navActive.getBoundingClientRect().width,
       left: navActive.getBoundingClientRect().left - navContainer.getBoundingClientRect().left,
     });
-  }, [activeNavIdx]);
+  }, [activeNavIdx, isStretching.rtl]);
 
   if (!targetInfo) return null;
 
