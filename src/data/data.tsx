@@ -6,9 +6,9 @@ import { PiTiktokLogo } from "react-icons/pi";
  */
 
 const navList = [
-  { label: "About", path: "#about" },
-  { label: "Portfolio", path: "#portfolio" },
-  { label: "Contact", path: "#contact" },
+  { label: "Semua", path: "#about" },
+  { label: "Tentang", path: "#portfolio" },
+  { label: "Projek", path: "#projects" },
 ] as const;
 
 /**

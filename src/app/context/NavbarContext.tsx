@@ -1,23 +1,47 @@
 "use client";
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
 
-import { createContext, Dispatch, SetStateAction, useContext, useState } from "react";
-
-type HashUrlContextType = {
-  currentHash: string;
-  setCurrentHash: Dispatch<SetStateAction<string>>;
+type NavbarContextType = {
+  activeNavIdx: number;
+  isStretching: {
+    stats: boolean;
+    rtl: boolean;
+  };
+  setActiveNavIdx: Dispatch<SetStateAction<number>>;
+  setIsStretching: Dispatch<SetStateAction<{ stats: boolean; rtl: boolean }>>;
 };
 
-const HashUrlContext = createContext<HashUrlContextType | undefined>(undefined);
+const NavbarContext = createContext<NavbarContextType | undefined>(undefined);
 
-const HashUrlContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentHash, setCurrentHash] = useState("#about");
-  return <HashUrlContext.Provider value={{ currentHash, setCurrentHash }}>{children}</HashUrlContext.Provider>;
+const NavbarContextProvider = ({ children }: { children: ReactNode }) => {
+  const [activeNavIdx, setActiveNavIdx] = useState(0);
+  const [isStretching, setIsStretching] = useState({ stats: false, rtl: false });
+
+  useEffect(() => {
+    if (isStretching.stats !== true) return;
+
+    const timeout = setTimeout(
+      () =>
+        setIsStretching((prev) => ({
+          ...prev,
+          stats: false,
+        })),
+      300
+    );
+    return () => clearTimeout(timeout);
+  }, [isStretching.stats]);
+
+  return (
+    <NavbarContext.Provider value={{ activeNavIdx, setActiveNavIdx, isStretching, setIsStretching }}>
+      {children}
+    </NavbarContext.Provider>
+  );
 };
 
-const useHashUrlContext = () => {
-  const ctx = useContext(HashUrlContext);
-  if (!ctx) throw new Error("useHashUrlContext harus digunakan di dalam <HashUrlContextProvider>");
+const useNavbarContext = () => {
+  const ctx = useContext(NavbarContext);
+  if (!ctx) throw new Error("NavbarContext harus digunakan di dalam <NavbarContextProvider>");
   return ctx;
 };
 
-export { HashUrlContextProvider, useHashUrlContext };
+export { NavbarContextProvider, useNavbarContext };

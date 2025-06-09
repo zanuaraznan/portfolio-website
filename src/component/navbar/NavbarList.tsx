@@ -1,25 +1,21 @@
+import { useNavbarContext } from "@/app/context/NavbarContext";
 import { navList } from "@/data/data";
-import { useEffect, useRef } from "react";
-import { useHashUrlContext } from "../../app/context/NavbarContext";
 import Link from "next/link";
 
 const NavbarList = () => {
-  const { currentHash, setCurrentHash } = useHashUrlContext();
-  const itemRef = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    setCurrentHash(window.location.hash || "#about");
-  }, [setCurrentHash]);
+  const { activeNavIdx, setActiveNavIdx, setIsStretching } = useNavbarContext();
 
   return (
     <div className="nav-list_container flex items-center relative z-1">
-      {navList.map(({ label, path }) => (
+      {navList.map(({ label, path }, i) => (
         <Link
-          ref={itemRef}
           key={label}
           href={path}
-          onClick={() => setCurrentHash(path)}
-          className={`p-2 px-3 ${currentHash === path ? "active" : ""}`}>
+          onClick={() => {
+            setActiveNavIdx(i);
+            setIsStretching({ stats: true, rtl: i < activeNavIdx });
+          }}
+          className={`p-2 px-3 ${activeNavIdx === i ? "active" : ""}`}>
           {label}
         </Link>
       ))}

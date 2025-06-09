@@ -11,7 +11,9 @@ const AboutSection = () => {
             Hai, gue Zanuar, fresh graduate DKV yang sekarang fokus jadi full-stack web developer. Siap bikin solusi
             digital dari desain UI sampai coding yang nyambung banget. Mau tahu lebih?
           </p>
-          <button className="p-4 px-6 font-bold rounded-full bg-slate-600 text-white">Download CV</button>
+          <button aria-label="Download CV" className="p-4 px-6 font-bold rounded-full bg-slate-600 text-white">
+            Download CV
+          </button>
         </div>
         <div className="w-full rounded-2xl overflow-hidden">
           <Image

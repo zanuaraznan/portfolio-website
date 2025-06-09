@@ -1,6 +1,6 @@
 "use client";
 import { useBackgroundContext } from "@/app/context/BackgroundContext";
-import { useThemeContext } from "@/app/context/themeContext";
+import { useThemeContext } from "@/app/context/ThemeContext";
 import { useMobile } from "@/hooks/useMobile";
 import React, { useRef, useEffect } from "react";
 

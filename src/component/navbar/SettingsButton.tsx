@@ -7,9 +7,11 @@ const SettingsButton = () => {
   const { open } = useModalContext();
   return (
     <button
+      title="Pengaturan"
+      aria-label="Pengaturan"
       onClick={() => open()}
       className="p-3 rounded-full bg-gray-200/35 backdrop-blur-lg transition-all duration-300 transform hover:rotate-90 hover:bg-gray-200">
-      <LuSettings size={18} />
+      <LuSettings aria-hidden size={18} />
     </button>
   );
 };
