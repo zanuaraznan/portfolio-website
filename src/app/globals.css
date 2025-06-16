@@ -1,16 +1,24 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @utility container {
-  margin-inline: auto;
-  padding-inline: 16px;
+    margin-inline: auto;
+    padding-inline: 16px;
+}
+
+@utility ease-smooth {
+    @apply ease-[cubic-bezier(.21,.01,0,.98)];
+}
+
+:root {
+    interpolate-size: allow-keywords;
 }
 
 * {
-  @apply focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-slate-300;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-200;
 }
 
 button {
-  @apply cursor-pointer;
+    @apply cursor-pointer;
 }

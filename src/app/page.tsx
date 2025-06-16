@@ -1,11 +1,5 @@
-import AboutSection from "@/component/home/AboutSection";
-
 const Home = () => {
-  return (
-    <>
-      <AboutSection />
-    </>
-  );
+    return <div className='h-[150vh]'></div>;
 };
 
 export default Home;
