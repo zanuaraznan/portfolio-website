@@ -21,7 +21,11 @@ const useModalStore = create<ModalState>((set, get) => ({
     },
     toggle: () => {
         const { isOpen, setOpen, setClose } = get();
-        isOpen ? setClose() : setOpen();
+        if (isOpen) {
+            setClose();
+        } else {
+            setOpen();
+        }
     },
     isAnimating: false,
     setAnimating: () => set((state) => ({ isAnimating: !state.isAnimating })),
